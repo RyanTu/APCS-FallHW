@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Greeter {
 
-    public void greet () {
+    public static void greet () {
 	System.out.println("Hello world!");
     }
 
