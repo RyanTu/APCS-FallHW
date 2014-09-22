@@ -1,10 +1,10 @@
 public class Driver{
     public static void main(String args[]){
-	String s = new String("mike zamansky");
-	s.indexOf(" ");
+	String name = new String("ryan tu");
+	int space = name.indexOf(" ");
 
-	String first = new String(s.substring(0,s.indexOf(" ")));
+	String first = new String(name.substring(0,space));
 
-	String last = new String(s.substring(s.indexOf(" ")+1,s.length()));
+	String last = new String(name.substring(space+1,name.length()));
     }
 }
