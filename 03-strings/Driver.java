@@ -4,7 +4,9 @@ public class Driver{
 	int space = name.indexOf(" ");
 
 	String first = new String(name.substring(0,space));
+	System.out.println(first);
 
 	String last = new String(name.substring(space+1,name.length()));
+	System.out.println(last);
     }
 }
