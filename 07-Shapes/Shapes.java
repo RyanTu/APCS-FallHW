@@ -33,7 +33,7 @@ public class Shapes {
 	return s;
     }
 
-    // tri2: 
+    // tri2: about 8 min
     public String tri2(int h){
 	String s = "";
 	int c = 1;
