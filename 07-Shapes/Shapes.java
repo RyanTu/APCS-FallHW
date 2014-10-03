@@ -55,6 +55,67 @@ public class Shapes {
 	}
 	return s;
     }
+
+    /* HW 07b begins*/
+    // tri3: 8 min
+    public String tri3(int h){
+	String s = "";
+	int row, sp, st;
+	for (row = 1; row <= h; row++){
+	    for (sp = h - row; sp > 0; sp--){
+		s = s + " ";
+	    }
+	    for (st = 2*row-1; st > 0; st--){
+		s = s + "*";
+	    }
+	    s = s + "\n";
+	}
+	return s;
+    }
+
+    // diamond: 35 min, problem: spacing with even numbers around h/2
+    public String diamond (int h){
+	String s = "";
+	int row, sp, st;
+	for (row = 0; row < (h/2.0); row++){
+	    for (sp = (h/2) - row; sp > 0; sp--){
+		s = s + " ";
+	    }
+	    for (st = 2*row+1; st > 0; st--){
+		s = s + "*";
+	    }
+	    s = s + "\n";
+	}
+	while (row < h){
+	    for (sp = row - (h/2); sp > 0; sp--){
+		s = s + " ";
+	    }
+	    for (st = 2*(h-row)-1; st > 0; st--){
+		s = s + "*";
+	    }
+	    s = s + "\n";
+	    row = row + 1;
+	}
+	return s;
+    }
+
+    // tri4: 5 min
+    public String tri4(int h){
+	String s = "";
+	int row, sp, st;
+	row = h;
+	while (row > 0){
+	    for (sp = 0; sp <= (h-row); sp++){
+		s = s + " ";
+	    }
+	    for (st = row; st > 0; st--){
+		s = s + "*";
+	    }
+	    s = s + "\n";
+	    row--;
+	}
+	return s;
+    }
 }
 
 
