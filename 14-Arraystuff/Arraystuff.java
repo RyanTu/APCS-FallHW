@@ -94,6 +94,7 @@ public class Arraystuff{
 	}
 	return nums;
     }
+
     public boolean tripleUp(int[] nums) {
 	int l = nums.length;
 	if(l==0) return false;
@@ -136,22 +137,23 @@ public class Arraystuff{
     }
 
     public int[] seriesUp(int n) {
-  int temp = n;
-  int insert = n;
-  int mem = insert;
-  int index = n*(n+1)/2;
-  int[] a = new int[index];
-  while (temp != 0){
-  if (insert != 0){
-  a[index - 1] = insert;
-  insert --;
-  } else{
-  mem --;
-  insert = mem;
-  temp --;
-  }
-  }
-  return a;
-  
+	int index = n*(n+1)/2;
+	int[] a = new int[index];
+	int highest = n;
+	int countdown = highest;
+	while (index>0){
+	    if (countdown>0){
+		a[index-1] = countdown;
+		countdown--;
+		index--;
+	    } else if (countdown == 0){
+		highest--;
+		countdown = highest;
+	    }
+	}
+	return a;
+    }
+
 }
-}
+
+
