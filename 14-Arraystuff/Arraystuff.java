@@ -43,8 +43,19 @@ public class Arraystuff{
 	return max;
     }
 
+    public int freq(int n){
+	int count = 0;
+	int check = a[n];
+	for (int i=0; i<a.length; i++){
+	    if (a[i] == check){
+		count++;
+	    }
+	}
+	return count;
+    }
+	
 
-public int sum67(int[] nums) {
+    public int sum67(int[] nums) {
 	boolean six = false;
 	int l=nums.length;
 	int c=0;
@@ -105,5 +116,42 @@ public int sum67(int[] nums) {
 	    }
 	}
 	return false;
+    }
 
+    public boolean canBalance(int[] nums) {
+	int l = nums.length;
+	int sum = 0;
+	int left = 0;
+	for (int i = 0; i<l; i++){
+	    sum += nums[i];
+	}
+	if ((sum%2)==1){
+	    return false;
+	} else{
+	    for (int i = 0; left<(sum/2); i++){
+		left += nums[i];
+	    }
+	    return left == sum/2;
+	}
+    }
+
+    public int[] seriesUp(int n) {
+  int temp = n;
+  int insert = n;
+  int mem = insert;
+  int index = n*(n+1)/2;
+  int[] a = new int[index];
+  while (temp != 0){
+  if (insert != 0){
+  a[index - 1] = insert;
+  insert --;
+  } else{
+  mem --;
+  insert = mem;
+  temp --;
+  }
+  }
+  return a;
+  
+}
 }
