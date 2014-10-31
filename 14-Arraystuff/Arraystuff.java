@@ -154,6 +154,31 @@ public class Arraystuff{
 	return a;
     }
 
+    // Does not work, help?
+    public int maxMirror(int[] nums) {
+	int max = 0;
+	int temp = 0;
+	int check = 0;
+	int[] reverse = new int[nums.length];
+	for (int i = 0; i<nums.length; i++){
+	    nums[i] = reverse[nums.length-i-1];
+	}
+	for (int i = 0; i<nums.length; i++){
+	    check = nums[i];
+	    System.out.println(i);
+	    for (int j = 0; j<reverse.length; j++){
+		if (check == reverse[j]){
+		    temp++;
+		    break;
+		} else if (check != reverse[j] && temp > 0){
+		    if (max < temp) max = temp;
+		    temp = 0;
+		}
+	    }
+	}
+	return max;    
+    }
+
 }
 
 
