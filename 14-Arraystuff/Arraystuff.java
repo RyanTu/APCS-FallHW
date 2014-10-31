@@ -154,7 +154,7 @@ public class Arraystuff{
 	return a;
     }
 
-    // Does not work, help?
+    // Does not work (worked on it for about an hour), help?
     public int maxMirror(int[] nums) {
 	int max = 0;
 	int temp = 0;
