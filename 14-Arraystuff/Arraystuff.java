@@ -154,29 +154,38 @@ public class Arraystuff{
 	return a;
     }
 
-    // Does not work (worked on it for about an hour), help?
-    public int maxMirror(int[] nums) {
+    // IT WORKS! It just took a while (~2 hours)
+    public int maxMirror(int[] nums){
 	int max = 0;
 	int temp = 0;
 	int check = 0;
+	int checkR = 0;
+	int tempIndex = 0;
 	int[] reverse = new int[nums.length];
 	for (int i = 0; i<nums.length; i++){
-	    nums[i] = reverse[nums.length-i-1];
+	    reverse[nums.length-i-1] = nums[i];
 	}
-	for (int i = 0; i<nums.length; i++){
-	    check = nums[i];
-	    System.out.println(i);
-	    for (int j = 0; j<reverse.length; j++){
-		if (check == reverse[j]){
+	for (int index = 0; index<nums.length; index++){
+	    check = nums[index];
+	    while (tempIndex<reverse.length){
+		checkR = reverse[tempIndex];
+		if (check == checkR){
 		    temp++;
+		    tempIndex++;
 		    break;
-		} else if (check != reverse[j] && temp > 0){
-		    if (max < temp) max = temp;
+		} else if (check != checkR){
+		    if (temp>max){
+			max = temp;
+			tempIndex = -1;
+		    }
 		    temp = 0;
 		}
+		tempIndex++; 
 	    }
+	    if (check != checkR) tempIndex = 0;
 	}
-	return max;    
+	if (temp>max) max = temp;
+	return max;
     }
 
 }
