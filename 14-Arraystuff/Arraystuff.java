@@ -8,7 +8,7 @@ public class Arraystuff{
 	rnd = new Random();
 	a = new int[n];
 	for (int i=0; i<a.length; i++){
-	    a[i] = 75+rnd.nextInt(76);
+	    a[i] = rnd.nextInt(21);
 	}
     }
 
@@ -54,7 +54,20 @@ public class Arraystuff{
 	return count;
     }
 	
-
+    public int mode(){
+	int mfreq = 0;
+	int temp = 0;
+	int ans = 0;
+	for (int i=0; i<a.length; i++){
+	    temp = freq(a[i]);
+	    if (temp>mfreq){
+		mfreq = temp;
+		ans = a[i];
+	    }
+	}
+	return ans;
+    }
+    
     public int sum67(int[] nums) {
 	boolean six = false;
 	int l=nums.length;
