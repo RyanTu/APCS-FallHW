@@ -1,15 +1,19 @@
 public class Sarray {
     int[] data;
+    int[] some = {1,2,3,4};
     int   last;
-    int len = data.length;
+    int len;
 
+    
     public Sarray(){
-	int[] data = {1,2,3,4,5,6,7};
+	data = some;
+	len = data.length;
     }
 
     public Sarray(int[] d) {
         // set up the initial instance variables
 	data = d;
+	len = data.length;
     }
 
     public boolean add(int i){
@@ -30,13 +34,11 @@ public class Sarray {
     public void  add(int index, int i){
         // adds item i  at index, shifting everything down as needed.
         // also grows as needed 
-	int[] newA;
-	if (data[len-1] != 0){ 
-	    newA = new int[len+1];
-	} else{ 
-	    newA = new int[len];
-	}
 
+	if (index > len-1){
+	    throw new IndexOutOfBoundsException();
+	}
+	int[] newA = new int[len];
 	for (int j = len-1; j>-1; j--){
 	    if (j>index && data[j] != 0){
 		newA[j+1] = data[j];
@@ -76,11 +78,32 @@ public class Sarray {
         // removes the item at index i
         // returns the old value
 	int ans = get(index);
-	for (int i = 0; i<len-1; i++){
+	int[] newA = new int[len-1];
+	for (int i = 0; i<newA.length-1; i++){
 	    if (i>=index){
-		data[i] = data[i+1];
+		newA[i] = data[i+1];
+	    } else {
+		newA[i] = data[i];
 	    }
 	}
+	data = newA;
+
+        String blah = "";
+	for (int a = 0; a<data.length; a++){
+	    blah+= "" + data[a];
+	}
+	System.out.println(blah);
+
 	return ans;
+
+    }
+
+    public static void main(String[] args){
+	Sarray s = new Sarray();
+        try{
+	    s.remove(1);
+	} catch (IndexOutOfBoundsException e){
+	    System.out.println("Use another index");
+	}
     }
 }
