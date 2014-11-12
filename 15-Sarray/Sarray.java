@@ -87,13 +87,6 @@ public class Sarray {
 	    }
 	}
 	data = newA;
-
-        String blah = "";
-	for (int a = 0; a<data.length; a++){
-	    blah+= "" + data[a];
-	}
-	System.out.println(blah);
-
 	return ans;
 
     }
@@ -101,7 +94,7 @@ public class Sarray {
     public static void main(String[] args){
 	Sarray s = new Sarray();
         try{
-	    s.remove(1);
+	    System.out.println(s.remove(1));
 	} catch (IndexOutOfBoundsException e){
 	    System.out.println("Use another index");
 	}
