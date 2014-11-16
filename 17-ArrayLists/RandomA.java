@@ -21,8 +21,5 @@ public class RandomA{
 	a[r1] = a[r2];
 	a[r2] = store;
 	}
-	for (int i = 0; i<a.length; i++){
-	    System.out.print(a[i] + " ");
-	}
     }
 }

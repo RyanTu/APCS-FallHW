@@ -16,7 +16,6 @@ public class RandomAL{
     public ArrayList<Integer> rand(){
 	ArrayList<Integer> temp = new ArrayList<Integer>();
 	int index;
-	// System.out.println(al);
 	while (al.size()>0){
 	    index = r.nextInt(al.size());
 	    temp.add(al.get(index));
