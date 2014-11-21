@@ -34,10 +34,15 @@ public class WordSearch {
     }
 
     public boolean noOverlap(String w, int x, int y, int xVel, int yVel){
+	int l = w.length();
+	if((x+l*xVel<0)||(x+l*xVel>=boardX)||
+	   (y+l*yVel<0)||(y+l*yVel>=boardY)){
+	    return false;
+	}
 	for (int i = 0; i<w.length(); i++){
 	    if (board[x][y] != '.'){
 		if (board[x][y] != w.charAt(i)){
-		    return false;
+		return false;
 		}
 	    }
 	    x += 1*xVel;
@@ -46,14 +51,7 @@ public class WordSearch {
 	return true;
     }
 
-    public boolean badIndex(int x, int y){
-	if (board[x][y] != '.'){
-	    return true;
-	}
-	return false;
-    }
-
-    public void addWord(String w /* TEST ,int x, int y*/ ){
+    public boolean addWord(String w){
 	int l = w.length()-1;
 	boolean fits = false;
 	while(!fits){
@@ -68,29 +66,19 @@ public class WordSearch {
 		yVel = r.nextInt(3) - 1;
 	    }
 	   
-	    if((x+l*xVel>=0)&&(x+l*xVel<boardX)&&
-	       (y+l*yVel>=0)&&(y+l*yVel<boardY)){
-		if (noOverlap(w,x,y,xVel,yVel)){
-		    for (int i = 0; i<w.length(); i++){
-			board[x][y] = w.charAt(i);
-			x += 1*xVel;
-			y += 1*yVel;
-			if (i == w.length() - 1){
-			    fits = true;
-			}
-		    }
+	    if (noOverlap(w,x,y,xVel,yVel)){
+		for (int i = 0; i<=l; i++){
+		    board[x][y] = w.charAt(i);
+		    x += xVel;
+		    y += yVel;
 		}
-	    /* TEST 
-	    } else if (badIndex(x,y)){
-		break;
-	    */
+		fits = true;
 	    } else {
 		xVel = 0;
 		yVel = 0;
-	    }
-
+	    }	    
 	}
-    }
-
+        return true;
+    }    
 }
 
