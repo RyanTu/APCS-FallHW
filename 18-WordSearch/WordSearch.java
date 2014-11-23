@@ -45,8 +45,8 @@ public class WordSearch {
 		return false;
 		}
 	    }
-	    x += 1*xVel;
-	    y += 1*yVel;
+	    x += xVel;
+	    y += yVel;
 	}
 	return true;
     }
@@ -54,13 +54,13 @@ public class WordSearch {
     public boolean addWord(String w){
 	int l = w.length()-1;
 	boolean fits = false;
+	int failCount = 0;
 	while(!fits){
-	    int y = r.nextInt(boardX);
-	    int x = r.nextInt(boardY);
+	    int x = r.nextInt(boardX);
+	    int y = r.nextInt(boardY);
 	    int xVel=0;
 	    int yVel=0;
 
-	    // controls direction the word is written in
 	    while(xVel==0 && yVel==0){
 		xVel = r.nextInt(3) - 1;
 		yVel = r.nextInt(3) - 1;
@@ -73,9 +73,13 @@ public class WordSearch {
 		    y += yVel;
 		}
 		fits = true;
-	    } else {
+	    } else if (failCount>10){
+	        System.out.println(w + " did not fit.");
+		return false;
+	    } else{
 		xVel = 0;
 		yVel = 0;
+		failCount += 1;
 	    }	    
 	}
         return true;
