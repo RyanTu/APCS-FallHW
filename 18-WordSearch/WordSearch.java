@@ -1,13 +1,10 @@
-import java.util.*;
-
 public class WordSearch {
     private char[][] board;
     private int boardX;
     private int boardY;
-    
     public WordSearch(int r, int c){
-	boardX = r;
-	boardY = c;
+	boardX = c;
+	boardY = r;
 	board = new char[r][c];
 	for (int i = 0; i < board.length; i++) {
 	    for (int j = 0; j < board[i].length; j++) {
@@ -15,13 +12,9 @@ public class WordSearch {
 	    }
 	}
     }
-
     public WordSearch() {
 	this(20,40);
     }
-
-    Random r = new Random();
-
     public String toString(){
 	String s = "";
 	for (int i = 0; i < board.length; i++) {
@@ -32,57 +25,48 @@ public class WordSearch {
 	}
 	return s;
     }
-
-    public boolean noOverlap(String w, int x, int y, int xVel, int yVel){
-	int l = w.length();
-	if((x+l*xVel<0)||(x+l*xVel>=boardX)||
-	   (y+l*yVel<0)||(y+l*yVel>=boardY)){
+    public boolean isValid(String w, int x, int y, int xVel, int yVel){
+	int l = w.length()-1;
+	if((x+l*xVel<0)||(x+l*xVel>=boardX)||(y+l*yVel<0)||(y+l*yVel>=boardY))
 	    return false;
-	}
-	for (int i = 0; i<w.length(); i++){
-	    if (board[x][y] != '.'){
-		if (board[x][y] != w.charAt(i)){
-		return false;
-		}
-	    }
-	    x += xVel;
-	    y += yVel;
+	for(int i=0; i<=l; i++){
+	    if(!((board[y][x]=='.')||(board[y][x]==w.charAt(i)))) return false;
+	    x+=xVel;
+	    y+=yVel;
 	}
 	return true;
     }
-
-    public boolean addWord(String w){
+    public void addWord(String w){
 	int l = w.length()-1;
 	boolean fits = false;
-	int failCount = 0;
 	while(!fits){
-	    int x = r.nextInt(boardX);
-	    int y = r.nextInt(boardY);
+	    int x = (int)(Math.random()*boardX);
+	    int y = (int)(Math.random()*boardY);
 	    int xVel=0;
 	    int yVel=0;
-
 	    while(xVel==0 && yVel==0){
-		xVel = r.nextInt(3) - 1;
-		yVel = r.nextInt(3) - 1;
+		xVel = (int)(Math.random()*3) - 1;
+		yVel = (int)(Math.random()*3) - 1;
 	    }
-	   
-	    if (noOverlap(w,x,y,xVel,yVel)){
-		for (int i = 0; i<=l; i++){
-		    board[x][y] = w.charAt(i);
-		    x += xVel;
-		    y += yVel;
+	    if(isValid(w,x,y,xVel,yVel)){
+		for(int i=0; i<=l; i++){
+		    board[y][x]=w.charAt(i);
+		    x+=xVel;
+		    y+=yVel;
 		}
 		fits = true;
-	    } else if (failCount>10){
-	        System.out.println(w + " did not fit.");
-		return false;
-	    } else{
-		xVel = 0;
-		yVel = 0;
-		failCount += 1;
-	    }	    
+	    }
 	}
-        return true;
-    }    
-}
+    }
 
+    int[] chars = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'}
+
+    public void fillIn(){
+	for (int i = 0; i<board.length; i++){
+	    for (int j = 0; j<board[i].length; i++){
+		if (board[i][j] == '.'){
+		    board[i][j] = chars[Math.random()*26];
+		}
+	    }
+    }
+}
