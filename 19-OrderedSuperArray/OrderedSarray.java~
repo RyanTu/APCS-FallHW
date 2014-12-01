@@ -1,0 +1,15 @@
+public class OrderedSarray extends Sarray{
+
+    public boolean add(String s){
+	String[] temp = new String[data.length+1];
+	for (int i = 0; i<data.length; i++){
+	    if (s.compareTo>data[i]){
+		temp[i] = s;
+	    } else {
+		temp[i] = data[i];
+	    }	
+	}
+	return true;
+    }
+    
+}

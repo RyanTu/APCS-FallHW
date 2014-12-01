@@ -1,12 +1,11 @@
 public class Sarray {
     String[] data;
-    String   last;
+    int   last;
     int len;
 
     
     public Sarray(){
-	String[] temp = {"some","thing","else"};
-	data = temp;
+	data = {"some","thing"};
 	len = data.length;
     }
 
@@ -16,14 +15,6 @@ public class Sarray {
 	len = data.length;
     }
 
-    public String toString(){
-	String blah = "";
-	for (int i = 0; i<data.length; i++){
-	    blah += data[i] + " ";
-	}
-	return blah;
-    }
-    
     public boolean add(String i){
         // adds an item to the end of the list, grow if needed
         // returns true
@@ -40,31 +31,34 @@ public class Sarray {
 	return true;
     }
 
-    public void add(int index, String i){
+    /*
+    public void  add(int index, int i){
         // adds item i  at index, shifting everything down as needed.
         // also grows as needed 
 
 	if (index > len-1){
 	    throw new IndexOutOfBoundsException();
 	}
-	String[] newA = new String[len+1];
+	int[] newA = new int[len];
 	for (int j = len-1; j>-1; j--){
-	    if (j>index){
+	    if (j>index && data[j] != 0){
 		newA[j+1] = data[j];
 	    } else if (j == index){
-		newA[j+1] = data[j];
 		newA[j] = i;
-	    } else
+	    } else 
 		newA[j] = data[j];
 	}
 	data = newA;
     }
+    */
 
     public int size() {
         // returns the number of items in the list (not the array size)
 	int s = 0;
-	for (int i = 0; i<data.length; i++){
-	    s++;
+	for (int i = 0; i<len; i++){
+	    if (data[i] != 0){
+		s++;
+	    }
 	}
 	return s;
     }
@@ -82,12 +76,12 @@ public class Sarray {
 	return last;
     }
 
-    public String remove(int index){
+    public int remove(int index){
         // removes the item at index i
         // returns the old value
-        String ans = get(index);
+	int ans = get(index);
 	String[] newA = new String[len-1];
-    for (int i = 0; i<newA.length-1; i++){
+	for (int i = 0; i<newA.length-1; i++){
 	    if (i>=index){
 		newA[i] = data[i+1];
 	    } else {
@@ -100,17 +94,9 @@ public class Sarray {
     }
 
     public static void main(String[] args){
-	String[] stuff = {"new","other","stuff"};
-	Sarray s = new Sarray(stuff);
-	OrderedSarray os = new OrderedSarray(stuff);
+	Sarray s = new Sarray();
         try{
-	    System.out.println(s.toString());
-	    os.add("zoo");
-	    System.out.println();
-	    System.out.println(os.get(0));
-	    System.out.println(os.get(1));
-	    System.out.println(os.get(2));
-	    System.out.println(os.get(3));
+	    System.out.println(s.remove(1));
 	} catch (IndexOutOfBoundsException e){
 	    System.out.println("Use another index");
 	}

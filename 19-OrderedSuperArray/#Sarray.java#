@@ -87,7 +87,7 @@ public class Sarray {
         // returns the old value
         String ans = get(index);
 	String[] newA = new String[len-1];
-    for (int i = 0; i<newA.length-1; i++){
+	for (int i = 0; i<newA.length-1; i++){
 	    if (i>=index){
 		newA[i] = data[i+1];
 	    } else {
