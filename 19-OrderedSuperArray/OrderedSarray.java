@@ -34,13 +34,15 @@ public class OrderedSarray extends Sarray{
 	System.out.println("OrderedSarray will use the index based on order.");
     }
 
+
+    // Still not working
     public String set(int index, String s){
 	boolean added = false;
+	String ans = "";
 	String[] temp = new String[super.data.length];
 	for (int i = 0; i<super.data.length; i++){
-	    String blah = "";
 	    if (s.compareTo(super.data[i])<0 && added == false){
-		blah = data[i];
+		ans = data[i];
 		temp[i] = s;
 		added = true;
 	    } else {
@@ -48,6 +50,6 @@ public class OrderedSarray extends Sarray{
 	    }
 	}
         super.data = temp;
-	return blah;
+	return ans;
     }
 }

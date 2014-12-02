@@ -105,7 +105,7 @@ public class Sarray {
 	OrderedSarray os = new OrderedSarray(stuff);
         try{
 	    System.out.println(s.toString());
-	    os.add("zoo");
+	    os.set(2,"zoo");
 	    System.out.println();
 	    System.out.println(os.get(0));
 	    System.out.println(os.get(1));
