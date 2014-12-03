@@ -87,7 +87,7 @@ public class Sarray {
         // returns the old value
         String ans = get(index);
 	String[] newA = new String[len-1];
-    for (int i = 0; i<newA.length-1; i++){
+	for (int i = 0; i<newA.length-1; i++){
 	    if (i>=index){
 		newA[i] = data[i+1];
 	    } else {
@@ -96,7 +96,6 @@ public class Sarray {
 	}
 	data = newA;
 	return ans;
-
     }
 
     public static void main(String[] args){
@@ -105,7 +104,7 @@ public class Sarray {
 	OrderedSarray os = new OrderedSarray(stuff);
         try{
 	    System.out.println(s.toString());
-	    os.set(2,"zoo");
+	    os.set(2,"cat");
 	    System.out.println();
 	    System.out.println(os.get(0));
 	    System.out.println(os.get(1));

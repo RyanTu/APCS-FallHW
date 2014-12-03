@@ -34,22 +34,22 @@ public class OrderedSarray extends Sarray{
 	System.out.println("OrderedSarray will use the index based on order.");
     }
 
-
-    // Still not working
     public String set(int index, String s){
-	boolean added = false;
-	String ans = "";
+	String ans = super.data[index];
 	String[] temp = new String[super.data.length];
-	for (int i = 0; i<super.data.length; i++){
-	    if (s.compareTo(super.data[i])<0 && added == false){
-		ans = data[i];
-		temp[i] = s;
-		added = true;
-	    } else {
+	boolean removed = false;
+	add(s);
+	for (int i = 0; i<temp.length; i++){
+	    if (super.data[i].equals(ans)){
+		temp[i] = super.data[i+1];
+	        removed = true;
+	    } else if (removed == false){
 		temp[i] = super.data[i];
+	    } else {
+		temp[i] = super.data[i+1];
 	    }
 	}
-        super.data = temp;
+	super.data = temp;
 	return ans;
     }
 }
