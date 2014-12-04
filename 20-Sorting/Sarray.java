@@ -99,30 +99,28 @@ public class Sarray {
     }
 
     public void isort(){
-	int n = 0;
-	String temp = "";
-	while (n<data.length){
-	    if (data[n].toCompare(data[n+1])>0){
-		temp = data[n];
-		data[n] = data[n+1];
-		data[n+1] = temp;
+	int last = 1;
+	while (last<data.length){
+	    int i = last;
+	    String newvalue = data[i];
+	    while(i > 0 && newvalue.compareTo(data[i-1])<1) {
+		data[i] = data[i-1];    
+		i--;
 	    }
-	    n++;
+	    data[i] = newvalue;
+	    last++;
+	    i = last;
 	}
-    }
-    
+    }    
+
     public static void main(String[] args){
-	String[] stuff = {"new","other","stuff"};
+	String[] stuff = {"stuff","new","other","what","blah","creative","not"};
 	Sarray s = new Sarray(stuff);
 	OrderedSarray os = new OrderedSarray(stuff);
         try{
 	    System.out.println(s.toString());
-	    os.set(2,"cat");
-	    System.out.println();
-	    System.out.println(os.get(0));
-	    System.out.println(os.get(1));
-	    System.out.println(os.get(2));
-	    System.out.println(os.get(3));
+	    s.isort();
+	    System.out.println(s.toString());
 	} catch (IndexOutOfBoundsException e){
 	    System.out.println("Use another index");
 	}
