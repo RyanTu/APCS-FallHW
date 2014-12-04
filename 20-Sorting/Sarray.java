@@ -103,7 +103,7 @@ public class Sarray {
 	while (last<data.length){
 	    int i = last;
 	    String newvalue = data[i];
-	    while(i > 0 && newvalue.compareTo(data[i-1])<1) {
+	    while(i > 0 && newvalue.compareTo(data[i-1])<0) {
 		data[i] = data[i-1];    
 		i--;
 	    }
@@ -111,7 +111,28 @@ public class Sarray {
 	    last++;
 	    i = last;
 	}
-    }    
+    }
+
+    public void ssort(){
+	for (int reset = 0; reset<data.length-1; reset++){
+	    String min = data[reset];
+	    int minIndex = 0;
+	    int i = reset + 1;
+	    while (i<data.length){
+		if (min.compareTo(data[i])>0){
+		    min = data[i];
+		    System.out.println("|" + min);
+		    minIndex = i;
+		}
+		i++;
+	    }
+	    String temp = data[reset];
+	    data[reset] = min;
+	    System.out.println("||" + data[reset]);
+	    data[minIndex] = temp;
+	    System.out.println(toString());
+	}
+    }
 
     public static void main(String[] args){
 	String[] stuff = {"stuff","new","other","what","blah","creative","not"};
@@ -119,7 +140,7 @@ public class Sarray {
 	OrderedSarray os = new OrderedSarray(stuff);
         try{
 	    System.out.println(s.toString());
-	    s.isort();
+	    s.ssort();
 	    System.out.println(s.toString());
 	} catch (IndexOutOfBoundsException e){
 	    System.out.println("Use another index");
