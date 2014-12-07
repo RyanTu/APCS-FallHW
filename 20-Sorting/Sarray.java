@@ -114,43 +114,20 @@ public class Sarray {
     }
 
     public void ssort(){
-	/*
-	for (int reset = 0; reset<data.length-1; reset++){
-	    String min = data[reset];
-	    System.out.println(min + reset);
-	    int i = reset + 1;
-	    int minIndex = i;
-	    System.out.println("|||" + i);
-	    while (i<data.length){
-		if (min.compareTo(data[i])>=0){
-		    min = data[i];
-		    minIndex = i;
-		}
-		i++;
-	    }
-	    String temp = data[reset];
-	    data[minIndex] = temp;
-	    data[reset] = min;
-	    System.out.println(toString());
-	}
-	*/
 	for (int current = 0; current<data.length; current++){
 	    int test = current+1;
 	    int minIndex = current;
-	    System.out.println(minIndex);
 	    String min = data[current];
-	    while (test<data.length){
+	    while (test+1<data.length){
 		if (data[test].compareTo(data[test+1])>0){
 		    min = data[test+1];
 		    minIndex = test+1;
 		}
 		test++;
-		System.out.println(test+1);
 	    }
 	    String temp = data[current];
 	    data[current] = min;
 	    data[minIndex] = temp;
-	    System.out.println(toString());
 	}
     }
 
@@ -158,12 +135,12 @@ public class Sarray {
 	String[] stuff = {"stuff","new","other","what","blah","creative","not"};
 	Sarray s = new Sarray(stuff);
 	OrderedSarray os = new OrderedSarray(stuff);
-	//  try{
-	    System.out.println(s.toString());
-	    s.ssort();
-	    System.out.println(s.toString());
-	    //	} catch (IndexOutOfBoundsException e){
-	    //  System.out.println("Use another index");
-	    //	}
+	try{
+	      System.out.println(s.toString());
+	      s.ssort();
+	      System.out.println(s.toString());
+	} catch (IndexOutOfBoundsException e){
+	    System.out.println("Use another index");
+	}
     }
 }
