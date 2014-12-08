@@ -99,36 +99,47 @@ public class Sarray {
     }
 
     public void isort(){
+	//int counter = 1;
 	int last = 1;
 	while (last<data.length){
 	    int i = last;
 	    String newvalue = data[i];
+	    //counter+=2;
 	    while(i > 0 && newvalue.compareTo(data[i-1])<0) {
 		data[i] = data[i-1];    
 		i--;
+		//counter+=2;
 	    }
 	    data[i] = newvalue;
 	    last++;
 	    i = last;
+	    //counter+=3;
 	}
+	//System.out.println(counter);
     }
 
     public void ssort(){
+	//int counter = 1;
 	for (int current = 0; current<data.length; current++){
 	    int test = current+1;
 	    int minIndex = current;
 	    String min = data[current];
+	    //counter+=3;
 	    while (test+1<data.length){
 		if (data[test].compareTo(data[test+1])>0){
 		    min = data[test+1];
 		    minIndex = test+1;
+		    //counter+=2;
 		}
 		test++;
+		//counter+=1;
 	    }
 	    String temp = data[current];
 	    data[current] = min;
 	    data[minIndex] = temp;
+	    //counter+=3;
 	}
+	//System.out.println(counter);
     }
 
     public void bsort(){
@@ -158,7 +169,7 @@ public class Sarray {
 	OrderedSarray os = new OrderedSarray(stuff);
 	try{
 	      System.out.println(s.toString());
-	      s.bsort();
+	      s.isort();
 	      System.out.println(s.toString());
 	} catch (IndexOutOfBoundsException e){
 	    System.out.println("Use another index");
