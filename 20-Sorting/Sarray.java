@@ -145,22 +145,29 @@ public class Sarray {
     public void bsort(){
 	boolean inOrder = false;
 	int count = 0;
+	int counter = 2;
 	for (int i = 0; !inOrder; i++){
 	    if (data[i].compareTo(data[i+1])>0){
 		String temp = data[i];
 		data[i] = data[i+1];
 		data[i+1] = temp;
 		count = 0;
+		counter += 4;
 	    } else {
 		count++;
+		counter += 1;
 	    }
 	    if (count == data.length-1){
 		inOrder = true;
+		counter += 1;
 	    }
 	    if (i == data.length-2){
 		i = -1;
+		counter += 1;
 	    }
+	    counter += 1;
 	}
+	System.out.println(counter);
     }
 
     public static void main(String[] args){
