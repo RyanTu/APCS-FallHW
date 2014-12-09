@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.*;
+
 public class Sarray {
     String[] data;
     String   last;
@@ -99,68 +102,80 @@ public class Sarray {
     }
 
     public void isort(){
-	//int counter = 1;
+	  int counter = 1;
 	int last = 1;
 	while (last<data.length){
 	    int i = last;
 	    String newvalue = data[i];
-	    //counter+=2;
+	      counter+=2;
 	    while(i > 0 && newvalue.compareTo(data[i-1])<0) {
 		data[i] = data[i-1];    
 		i--;
-		//counter+=2;
+		  counter+=2;
 	    }
 	    data[i] = newvalue;
 	    last++;
 	    i = last;
-	    //counter+=3;
+	      counter+=3;
 	}
-	//System.out.println(counter);
+	  System.out.println(counter);
     }
 
     public void ssort(){
-	//int counter = 1;
+	int counter = 1;
 	for (int current = 0; current<data.length; current++){
 	    int test = current+1;
 	    int minIndex = current;
 	    String min = data[current];
-	    //counter+=3;
+	      counter+=3;
 	    while (test+1<data.length){
 		if (data[test].compareTo(data[test+1])>0){
 		    min = data[test+1];
 		    minIndex = test+1;
-		    //counter+=2;
+		      counter+=2;
 		}
 		test++;
-		//counter+=1;
+		  counter+=1;
 	    }
 	    String temp = data[current];
 	    data[current] = min;
 	    data[minIndex] = temp;
-	    //counter+=3;
+	      counter+=3;
 	}
-	//System.out.println(counter);
+	  System.out.println(counter);
     }
 
     public void bsort(){
 	boolean inOrder = false;
 	int count = 0;
+	int counter = 2;
 	for (int i = 0; !inOrder; i++){
 	    if (data[i].compareTo(data[i+1])>0){
 		String temp = data[i];
 		data[i] = data[i+1];
 		data[i+1] = temp;
 		count = 0;
+		counter += 4;
 	    } else {
 		count++;
+		counter += 1;
 	    }
 	    if (count == data.length-1){
 		inOrder = true;
+		counter += 1;
 	    }
 	    if (i == data.length-2){
 		i = -1;
+		counter += 1;
 	    }
+	    counter += 1;
 	}
+	System.out.println(counter);
+    }
+
+    public void builtin(){
+	Arrays.sort(data);
+
     }
 
     public static void main(String[] args){
@@ -169,7 +184,7 @@ public class Sarray {
 	OrderedSarray os = new OrderedSarray(stuff);
 	try{
 	      System.out.println(s.toString());
-	      s.isort();
+	      s.builtin();
 	      System.out.println(s.toString());
 	} catch (IndexOutOfBoundsException e){
 	    System.out.println("Use another index");
