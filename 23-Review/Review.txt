@@ -1,0 +1,13 @@
+Ryan Tu
+Project I am reviewing: Synthesizer
+https://github.com/psydeolite/ap-final
+
+Overall, the code seems to have made some progress in creating the layout of the piano and playing some notes. 
+The most obvious errors I see are capitalization errors with "Key" in lines 122 and 127 and using the variable
+"pitch" without initializing it at lines 123 and 128.
+The code still needs to be documented and seeing how more function needs to be added to the piano, that should 
+begin soon. Some of the variable naming (ex. public Key(int x, int y, int w, int h, int n); super(x,y,w,h); from
+lines 114-115) make the code a bit difficult to follow from an outsider's perspective.
+At the time I am coding this, there are the compiling errors I mentioned above which make it difficult to examine
+what the current project looks like. However, based on yesterday, a some work still needs to be done depending on
+how difficult it is to add the sounds of five instuments added into this project.
